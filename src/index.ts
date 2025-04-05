@@ -3,6 +3,9 @@ import cors from "cors";
 import express, { Application } from "express";
 import morgan from "morgan";
 import dataBaseService from "./services/data-base.service";
+import usersRoutes from "./routes/users.routes";
+import statusRoutes from "./routes/status.routes";
+import rolesRoutes from "./routes/roles.routes";
 
 var bodyParser = require("body-parser");
 
@@ -39,7 +42,9 @@ class Api {
   }
 
   routes(): void {
-   
+    this.app.use('/api/users', usersRoutes);
+    this.app.use('/api/status', statusRoutes);
+    this.app.use('/api/roles', rolesRoutes);
   }
 
   start(): void {
